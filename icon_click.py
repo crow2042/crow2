@@ -3,6 +3,7 @@ import pygetwindow as gw
 import numpy as np
 import cv2
 import time
+import random
 
 
 
@@ -694,6 +695,123 @@ def chuzhan():#出战
 
         break
 
+def frzj():#丰饶之间
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
+
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
+
+    button_template = cv2.imread('button/frzj.png', 0) 
+
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
+
+    threshold = 0.5
+    locations = np.where(result >= threshold)
+
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.click(screen_x, screen_y)
+        time.sleep(1)  
+
+        break
+
+def tiaozhan():#tiaozhan
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
+
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
+
+    button_template = cv2.imread('button/tiaozhan.png', 0) 
+
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
+
+    threshold = 0.5
+    locations = np.where(result >= threshold)
+
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.click(screen_x, screen_y)
+        time.sleep(1)  
+
+        break
+
+def ptgj():#普通攻击
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
+
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
+
+    button_template = cv2.imread('button/ptgj.png', 0) 
+
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
+
+    threshold = 0.8
+    locations = np.where(result >= threshold)
+
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.mouseDown(screen_x, screen_y)
+        time.sleep(30)
+        pyautogui.mouseUp(screen_x, screen_y)
+
+
+        break
+
+def random_click_in_window():#通过点击空白处场景
+ 
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+    window = window[0]  
+
+    window_left, window_top = window.topleft
+    window_width, window_height = window.size
+
+    # 开始随机点击
+    for _ in range(1):
+        # 在窗口范围内随机生成点击坐标
+        random_x = random.randint(window_left + 10, window_left + window_width - 10)
+        random_y = random.randint(window_top + 10, window_top + window_height - 10)
+
+        print(f"随机点击位置: ({random_x}, {random_y})")
+        pyautogui.click(random_x, random_y)  # 执行点击操作
+        time.sleep(0.5)  # 等待指定时间
+
+
+random_click_in_window()
+
+
+
+
+
+
+
 
 
 def ez_model():  #简单模式
@@ -732,6 +850,8 @@ def ez_model():  #简单模式
     time.sleep(1)
     yaoqing()
     chuzhan()
+    time.sleep(5)
+    quit()
 
     return 0
 
