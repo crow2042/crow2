@@ -363,7 +363,7 @@ def queding():#点击确定
 
     result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
 
-    threshold = 0.3
+    threshold = 0.8
     locations = np.where(result >= threshold)
 
     for pt in zip(*locations[::-1]): 
@@ -479,7 +479,7 @@ def ptzm():#点击普通招募
 
     result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
 
-    threshold = 0.5
+    threshold = 0.6
     locations = np.where(result >= threshold)
 
     for pt in zip(*locations[::-1]): 
@@ -803,58 +803,262 @@ def random_click_in_window():#通过点击空白处场景
         pyautogui.click(random_x, random_y)  # 执行点击操作
         time.sleep(0.5)  # 等待指定时间
 
+def shilian():#试炼之地
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
 
-random_click_in_window()
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
 
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
 
+    button_template = cv2.imread('button/shilian.png', 0) 
 
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
 
+    threshold = 0.5
+    locations = np.where(result >= threshold)
 
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.click(screen_x, screen_y)
+        time.sleep(1)  
 
+        break
+
+def shengcuntiaozhan():#生存试炼
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
+
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
+
+    button_template = cv2.imread('button/shengcuntiaozhan.png', 0) 
+
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
+
+    threshold = 0.5
+    locations = np.where(result >= threshold)
+
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.click(screen_x, screen_y)
+        time.sleep(1)  
+
+        break
+
+def chongzhi():#重置生存试炼（后面接确定
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
+
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
+
+    button_template = cv2.imread('button/chongzhi.png', 0) 
+
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
+
+    threshold = 0.8
+    locations = np.where(result >= threshold)
+
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.click(screen_x, screen_y)
+        time.sleep(1)  
+
+        break
+
+def kaishisaodang():#重置生存试炼（后面接确定
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
+
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
+
+    button_template = cv2.imread('button/kaishisaodang.png', 0) 
+
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
+
+    threshold = 0.8
+    locations = np.where(result >= threshold)
+
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.click(screen_x, screen_y)
+        time.sleep(1)  
+
+        break
+
+def zhunbeijiuxu():#准备就绪
+    window_title = "MuMu模拟器12"  
+    window = gw.getWindowsWithTitle(window_title)
+
+    window = window[0] 
+    window_left, window_top = window.topleft 
+    window_width, window_height = window.size 
+
+    screenshot = pyautogui.screenshot(region=(window_left, window_top, window_width, window_height))
+    screenshot_np = np.array(screenshot)
+    screenshot_gray = cv2.cvtColor(screenshot_np, cv2.COLOR_RGB2GRAY)  
+
+    button_template = cv2.imread('button/zhunbeijiuxu.png', 0) 
+
+    result = cv2.matchTemplate(screenshot_gray, button_template, cv2.TM_CCOEFF_NORMED)
+
+    threshold = 0.9
+    locations = np.where(result >= threshold)
+
+    for pt in zip(*locations[::-1]): 
+        print(f"按钮找到在: {pt}")
+        screen_x = pt[0] + window_left + button_template.shape[1] // 2
+        screen_y = pt[1] + window_top + button_template.shape[0] // 2
+        
+        pyautogui.click(screen_x, screen_y)
+        time.sleep(1)  
+
+        break
 
 
 
 def ez_model():  #简单模式
+    #精英副本扫荡
     reward_1()
+    time.sleep(3)
     gonow_1()
+    time.sleep(3)
     jyfb()
+    time.sleep(3)
     bjsd()
+    time.sleep(3)
     quanxuan()
+    time.sleep(3)
     saodang()
     time.sleep(5)
     quit()
-    quit()
-    quit()
-    quit()
-    quit()
-    reward_1()
-    gonow_1()
-    qifu()
     time.sleep(3)
     quit()
+    time.sleep(3)
     quit()
+    time.sleep(3)
     quit()
+    time.sleep(3)
+    quit()
+    time.sleep(3)
+    #组织祈福
     reward_1()
+    time.sleep(3)
     gonow_1()
-    mfzc()
-    mfzc()
-    quit()
-    rzzm()
-    ptzm()
-    mf()
-    time.sleep(1)
-    queding()
-    quit()
-    xiaoduituxi()
-    zuzhizhuzhan()
-    time.sleep(1)
-    yaoqing()
-    chuzhan()
+    time.sleep(5)
+    qifu()
     time.sleep(5)
     quit()
+    time.sleep(5)
+    quit()
+    time.sleep(3)
+    quit()
+    time.sleep(3)
+    #铜币招财
+    reward_1()
+    time.sleep(3)
+    gonow_1()
+    time.sleep(3)
+    mfzc()
+    time.sleep(3)
+    mfzc()
+    time.sleep(3)
+    quit()
+    time.sleep(3)
+    #忍者招募
+    rzzm()
+    time.sleep(3)
+    ptzm()
+    time.sleep(3)
+    mf()
+    time.sleep(3)
+    queding()
+    time.sleep(3)
+    quit()
+    time.sleep(3)
+    #小队突袭
+    xiaoduituxi()
+    time.sleep(3)
+    zuzhizhuzhan()
+    time.sleep(3)
+    yaoqing()
+    time.sleep(3)
+    chuzhan()
+    time.sleep(60)
+    zuzhizhuzhan()
+    time.sleep(3)
+    yaoqing()
+    time.sleep(3)
+    chuzhan()
+    time.sleep(60)
+    quit()
+    time.sleep(3)
+    #生存试炼
+    shilian()
+    time.sleep(3)
+    shengcuntiaozhan()
+    time.sleep(3)
+    chongzhi()
+    time.sleep(3)
+    queding()
+    time.sleep(3)
+    kaishisaodang()
+    time.sleep(3)
+    zhunbeijiuxu()
+    time.sleep(60)#不确定，后面要修改或者找一个检索方式
+    quit()
+    time.sleep(3)
+    frzj()
+    time.sleep(3)
+    tiaozhan()
+    time.sleep(3)
+    ptgj()
+    time.sleep(40)
+    random_click_in_window()
+    time.sleep(3)
+    quit()
+
+
+
+
+
+
 
     return 0
 
-
+gonow_3()
 
 
